@@ -1,0 +1,147 @@
+texto,intent
+adios,despedida
+hasta luego,despedida
+bye,despedida
+nos vemos,despedida
+muchas gracias adios,despedida
+que tengas buen dia,despedida
+hasta pronto,despedida
+hola,saludo
+buenos días,saludo
+buenas tardes,saludo
+buenas noches,saludo
+buenas,saludo
+hola buenos días,saludo
+qué tal,saludo
+hey,saludo
+qué hay,saludo
+que onda,saludo
+quiero comprar un libro,nuevo_pedido
+me ayudas a hacer un pedido,nuevo_pedido
+quiero pedir una novela,nuevo_pedido
+puedo encargar un libro con ustedes,nuevo_pedido
+necesito hacer una compra de libros,nuevo_pedido
+quiero levantar un pedido nuevo,nuevo_pedido
+quiero hacer el encargo de un libro,nuevo_pedido
+quiero pedir un titulo,nuevo_pedido
+vengo por un libro,nuevo_pedido
+me gustaría llevar una novela,nuevo_pedido
+estoy interesado en comprar unos autores,nuevo_pedido
+quiero llevarme unos cuantos libros,nuevo_pedido
+¿puedo pedir un libro?,nuevo_pedido
+voy a hacer una compra,nuevo_pedido
+quisiera llevarme unos libros,nuevo_pedido
+estoy interesado en conseguir unos titulos,nuevo_pedido
+me interesan algunos autores,nuevo_pedido
+estoy buscando comprar un libro,nuevo_pedido
+¿me ayudas a comprar un libro?,nuevo_pedido
+ando buscando un libro para comprar,nuevo_pedido
+quiero hacerme de un libro,nuevo_pedido
+quiero cancelar mi pedido,cancelar_pedido
+necesito anular una compra,cancelar_pedido
+me ayudas a cancelar un libro que pedí,cancelar_pedido
+ya no quiero mi pedido,cancelar_pedido
+puedo cancelar la orden,cancelar_pedido
+quiero dar de baja esa compra,cancelar_pedido
+quiero cancelar mi orden,cancelar_pedido
+ya no quiero lo que compré,cancelar_pedido
+no ya no quiero ese libro cancélalo,cancelar_pedido
+¿es posible cancelar mi orden?,cancelar_pedido
+cancela mi orde me equivoqué,cancelar_pedido
+kiero cancelar mi compra,cancelar_pedido
+quiero cancelar la compra q hice,cancelar_pedido
+no deseo continuar con ese producto,cancelar_pedido
+no quiero que me envíen el articulo,cancelar_pedido
+deseo cancelar una orden realizada por error,cancelar_pedido
+¿todavia estoy a tiempo de cancelar mi compra?,cancelar_pedido
+ya no me interesa lo que compré,cancelar_pedido
+quiero revertir el pedido,cancelar_pedido
+ocupo cancelar mi orden,cancelar_pedido
+donde va mi pedido,rastrear_pedido
+quiero rastrear una compra,rastrear_pedido
+me puedes decir el estado de mi pedido,rastrear_pedido
+como sigo el envío de mis libros,rastrear_pedido
+quiero saber si ya salió mi pedido,rastrear_pedido
+pueden revisar por dónde viene mi compra,rastrear_pedido
+¿ya enviaron mi compra?,rastrear_pedido
+¿cuando llegará lo que compre?,rastrear_pedido
+necesito saber que pasó con mi compra,rastrear_pedido
+¿que onda con mi pedido?,rastrear_pedido
+¿ya casi llega mi pedido?,rastrear_pedido
+¿que pasó con lo que compré?,rastrear_pedido
+mi compra donde va,rastrear_pedido
+aun no llega mi compra,rastrear_pedido
+no se donde está el producto que compré,rastrear_pedido
+quiero verificar si mi paquete ya fue enviado,rastrear_pedido
+me gustaría rastrear mi compra,rastrear_pedido
+¿ya está en camino mi compra?,rastrear_pedido
+¿ya viene lo que pedí?,rastrear_pedido
+¿en que estado está mi pedido número 1234?,rastrear_pedido
+tienen el libro cien años de soledad,info_titulos
+busco información sobre un título,info_titulos
+quiero saber si manejan novelas históricas,info_titulos
+me dices si tienen libros de poesía,info_titulos
+quisiera saber si cuentan con un título específico,info_titulos
+hay ejemplares disponibles de cierto libro,info_titulos
+quiero conocer los detalles de un libro,info_titulos
+estoy buscando información sobre esta obra,info_titulos
+¿qué tal está ese libro memorias de adriano?,info_titulos
+¿que rollo con este libro opus nigrum?,info_titulos
+¿está bueno ese libro?,info_titulos
+¿qué me puedes decir sobre este titulo?,info_titulos
+¿qué onda con esta obra?,info_titulos
+¿qué información tienes sobre don quijote de la mancha?,info_titulos
+info de vidas paralelas,info_titulos
+quisiera saber si hay el título ab urbe condita,info_titulos
+ver descripción de las odas de pindaro,info_titulos
+cuentame de este libro la palabra frente al vacío,info_titulos
+consultar titulo el nombre de la rosa,info_titulos
+¿qué libros tienen?,info_titulos
+muéstrame el catálogo,info_titulos
+enséñame los títulos,info_titulos
+¿qué libros hay disponibles?,info_titulos
+háblame de la odisea,info_titulos
+¿tienen libros de homero?,info_titulos
+quiero libros clásicos,info_titulos
+¿qué títulos hay disponibles?,info_titulos
+¿hay libros de cervantes?,info_titulos
+cuáles son sus horarios,sucursales_horarios
+en dónde tienen sucursales,sucursales_horarios
+a qué hora abren,sucursales_horarios
+me compartes la dirección de una sucursal,sucursales_horarios
+qué días atienden,sucursales_horarios
+quiero saber dónde están ubicados,sucursales_horarios
+necesito saber el orario de atencion,sucursales_horarios
+¿cuál es su horario?,sucursales_horarios
+¿hasta qué hora están?,sucursales_horarios
+¿en qué horario atienden?,sucursales_horarios
+¿ya cerraron?,sucursales_horarios
+¿qué horas manejan?,sucursales_horarios
+¿hoy trabajan?,sucursales_horarios
+¿están abiertos todavía?,sucursales_horarios
+¿la sucursal abre los domingos?,sucursales_horarios
+info de horarios,sucursales_horarios
+horarios,sucursales_horarios
+¿cuál es el horario de la sucursal del centro?,sucursales_horarios
+¿qué horarios tienen los sábados?,sucursales_horarios
+¿abren hoy?,sucursales_horarios
+quiero hablar con alguien de mayoreo,mayoreo
+necesito atención para compra al mayoreo,mayoreo
+me interesa comprar muchos libros,mayoreo
+pueden comunicarme con ventas al mayoreo,mayoreo
+busco un especialista para compras grandes,mayoreo
+quiero cotizar un pedido grande de libros,mayoreo
+necesito hacer una compra al por mayor,mayoreo
+¿tienes descuentos por volumen?,mayoreo
+quiero comprar muchas piezas,mayoreo
+necesito surtirme para mi negocio,mayoreo
+quiero hacer un pedido grande,mayoreo
+necesito comprar varios productos de una sola vez,mayoreo
+estoy buscando distribución mayorista,mayoreo
+busco comprar 100 piezas de un producto,mayoreo
+venta mayorista,mayoreo
+pedido grande,mayoreo
+compra por volumen,mayoreo
+¿cómo funcionan las compras al mayoreo?,mayoreo
+¿tienen descuentos por volumen?,mayoreo
+ando buscando comprar por grandes cantidades,mayoreo
