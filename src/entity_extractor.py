@@ -1,9 +1,11 @@
 from database import obtener_todos_los_libros
 
+import unicodedata
+
 
 def extraer_entidades(texto):
 
-    texto = texto.lower()
+    texto = normalizar_texto(texto)
 
     entidades = {
         "titulo": None,
@@ -15,16 +17,16 @@ def extraer_entidades(texto):
     for titulo, autor in libros:
 
         # Buscar título completo
-        if titulo.lower() in texto:
+        if normalizar_texto(titulo) in texto:
             entidades["titulo"] = titulo
 
         # Buscar autor completo
-        if autor.lower() in texto:
+        if normalizar_texto(autor) in texto:
             entidades["autor"] = autor
             continue
 
         # Buscar por cada palabra significativa del autor
-        for palabra in autor.lower().split():
+        for palabra in normalizar_texto(autor).split():
 
             if len(palabra) <= 2:
                 continue
@@ -49,3 +51,15 @@ def coincide(texto, valor):
             return True
 
     return False
+
+def normalizar_texto(texto):
+
+    texto = texto.lower()
+    texto = unicodedata.normalize("NFD", texto)
+    texto = "".join(
+        caracter 
+        for caracter in texto
+        if unicodedata.category(caracter) != "Mn"
+    )
+
+    return texto
