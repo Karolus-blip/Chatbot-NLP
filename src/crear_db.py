@@ -42,5 +42,5 @@ else:
 conexion.commit()
 conexion.close()
 
-print("Base de datos inicializada y catálogo cargado.")
+
 
