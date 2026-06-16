@@ -5,3 +5,13 @@ INTENCIONES_SOCIALES = {
     "confirmacion",
     "negacion"
 }
+
+
+INTENCIONES_FUNCIONALES = {
+    "info_titulos",
+    "nuevo_pedido",
+    "cancelar_pedido",
+    "rastrear_pedido",
+    "sucursales_horarios",
+    "mayoreo"
+}

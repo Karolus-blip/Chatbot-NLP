@@ -3,7 +3,10 @@ from pathlib import Path
 import random
 import joblib
 
-from intent_categories import INTENCIONES_SOCIALES
+from intent_categories import (
+    INTENCIONES_SOCIALES,
+    INTENCIONES_FUNCIONALES,
+)
 from responses import RESPUESTAS
 from database import (
         obtener_todos_los_libros,
@@ -44,17 +47,38 @@ def predecir_intencion(modelo, texto: str):
 
 
 def obtener_respuesta(intent: str, confianza: float, entidades: dict):
+   
+
+    respuesta = RESPUESTAS.get(intent, RESPUESTAS["fallback"])
+
+    if isinstance(respuesta, list):
+        return random.choice(respuesta)
+
+    return respuesta
+
+
+def obtener_respuesta_funcional(
+    intent: str,
+    confianza: float,
+    entidades: dict,
+):
+
     if confianza < UMBRAL_CONFIANZA:
         return random.choice(RESPUESTAS["fallback"])
 
     if intent == "info_titulos":
+
         if entidades.get("autor"):
+
             libros = buscar_por_autor(entidades["autor"])
+
             if libros:
+
                 lista = "\n".join(
                     f"- {titulo}"
                     for titulo, autor in libros
                 )
+
                 return (
                     f"Encontré estos libros de "
                     f"{entidades['autor']}:\n{lista}"
@@ -63,9 +87,13 @@ def obtener_respuesta(intent: str, confianza: float, entidades: dict):
             return "No encontré libros de ese autor."
 
         if entidades.get("titulo"):
+
             libro = buscar_por_titulo(entidades["titulo"])
+
             if libro:
+
                 titulo, autor, categoria, precio, stock = libro
+
                 return (
                     f"Título: {titulo}\n"
                     f"Autor: {autor}\n"
@@ -75,6 +103,7 @@ def obtener_respuesta(intent: str, confianza: float, entidades: dict):
                 )
 
         libros = obtener_todos_los_libros()
+
         if not libros:
             return "Por el momento no hay títulos registrados."
 
@@ -83,22 +112,29 @@ def obtener_respuesta(intent: str, confianza: float, entidades: dict):
             for titulo, autor in libros
         )
 
-        return f"Estos son algunos de nuestros títulos:\n{lista}"
+        return (
+            "Estos son algunos de nuestros títulos:\n"
+            f"{lista}"
+        )
 
     respuesta = RESPUESTAS.get(intent, RESPUESTAS["fallback"])
+
     if isinstance(respuesta, list):
         return random.choice(respuesta)
+
     return respuesta
 
 def procesar_mensaje(texto, modelo):
- 
     intent, confianza, ranking = predecir_intencion(modelo, texto)
 
-    if intent in INTENCIONES_SOCIALES:
-        entidades = {}
-        entidades_validas = {}
+    entidades = {}
+    entidades_validas = {}
 
-    else:
+    if intent in INTENCIONES_SOCIALES:
+        # Reuse the generic response getter for social intents
+        respuesta = obtener_respuesta(intent, confianza, {})
+
+    elif intent in INTENCIONES_FUNCIONALES:
         entidades = extraer_entidades(texto)
 
         entidades_validas = {
@@ -107,18 +143,21 @@ def procesar_mensaje(texto, modelo):
             if valor is not None
         }
 
-    respuesta = obtener_respuesta(
-        intent,
-        confianza,
-        entidades
-    )
+        respuesta = obtener_respuesta_funcional(
+            intent,
+            confianza,
+            entidades,
+        )
+
+    else:
+        respuesta = random.choice(RESPUESTAS["fallback"])
 
     return {
         "respuesta": respuesta,
         "intent": intent,
         "confianza": confianza,
         "ranking": ranking,
-        "entidades": entidades_validas
+        "entidades": entidades_validas,
     }
 
 
