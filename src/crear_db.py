@@ -1,9 +1,15 @@
 import sqlite3
+import csv
+from pathlib import Path
 
-conexion = sqlite3.connect("data/libreria.db")
+BASE_DIR = Path(__file__).resolve().parent.parent
+RUTA_DB = BASE_DIR / "data" / "libreria.db"
+RUTA_CATALOGO = BASE_DIR / "data" / "catalogo.csv"
+
+conexion = sqlite3.connect(RUTA_DB)
 cursor = conexion.cursor()
 
-# Crear la tabla si no existe
+
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS libros (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -18,13 +24,19 @@ CREATE TABLE IF NOT EXISTS libros (
 cursor.execute("SELECT COUNT(*) FROM libros")
 cantidad = cursor.fetchone()[0]
 
-# Insertar algunos libros
-libros = [
-    ("La Ilíada", "Homero", "Clásicos", 320.0, 8),
-    ("La Odisea", "Homero", "Clásicos", 300.0, 10),
-    ("El ingenioso hidalgo Don Quijote de la Mancha", "Miguel de Cervantes", "Novela", 450.0, 5),
-    ("Rayuela", "Julio Cortázar", "Novela", 390.0, 7),
-]
+with open(RUTA_CATALOGO, encoding="utf-8") as archivo:
+    lector = csv.DictReader(archivo)
+    libros = []
+    for fila in lector:
+        libros.append(
+            (
+                fila["titulo"],
+                fila["autor"],
+                fila["categoria"],
+                float(fila["precio"]),
+                int(fila["stock"]),
+            )
+        )
 
 if cantidad == 0:
 

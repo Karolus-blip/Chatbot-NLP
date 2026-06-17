@@ -13,5 +13,6 @@ INTENCIONES_FUNCIONALES = {
     "cancelar_pedido",
     "rastrear_pedido",
     "sucursales_horarios",
-    "mayoreo"
+    "mayoreo",
+    "consultar_precio"
 }

@@ -63,10 +63,41 @@ def obtener_respuesta_funcional(
     entidades: dict,
 ):
 
+    print(">>> Dentro de obtener_respuesta_funcional")
+    print(f"Intent recibido: {intent}")
+
     if confianza < UMBRAL_CONFIANZA:
         return random.choice(RESPUESTAS["fallback"])
 
-    if intent == "info_titulos":
+    if intent == "consultar_precio":
+
+        print(">>> Entré al bloque consultar_precio")
+        print(f"Entidades: {entidades}")
+
+        if entidades.get("titulo"):
+
+            print(f"Título detectado: {entidades['titulo']}")
+
+            libro = buscar_por_titulo(entidades["titulo"])
+
+            print(f"Resultado de buscar_por_titulo: {libro}")
+
+            if libro:
+
+                titulo, autor, categoria, precio, stock = libro
+
+                return (
+                    f"El precio de '{titulo}' es "
+                    f"${precio:.2f}."
+                )
+
+            return "No encontré ese libro en el catálogo."
+
+        return (
+            "¿De qué libro te gustaría conocer el precio?"
+        )
+
+    elif intent == "buscar_por_autor":
 
         if entidades.get("autor"):
 
@@ -86,6 +117,8 @@ def obtener_respuesta_funcional(
 
             return "No encontré libros de ese autor."
 
+    elif intent == "info_titulos":
+
         if entidades.get("titulo"):
 
             libro = buscar_por_titulo(entidades["titulo"])
@@ -98,7 +131,7 @@ def obtener_respuesta_funcional(
                     f"Título: {titulo}\n"
                     f"Autor: {autor}\n"
                     f"Categoría: {categoria}\n"
-                    f"Precio: ${precio}\n"
+                    f"Precio: ${precio:.2f}\n"
                     f"Stock: {stock}"
                 )
 
@@ -125,16 +158,22 @@ def obtener_respuesta_funcional(
     return respuesta
 
 def procesar_mensaje(texto, modelo):
+
     intent, confianza, ranking = predecir_intencion(modelo, texto)
 
     entidades = {}
     entidades_validas = {}
 
     if intent in INTENCIONES_SOCIALES:
-        # Reuse the generic response getter for social intents
-        respuesta = obtener_respuesta(intent, confianza, {})
+
+        respuesta = obtener_respuesta(
+            intent,
+            confianza,
+            {},
+        )
 
     elif intent in INTENCIONES_FUNCIONALES:
+
         entidades = extraer_entidades(texto)
 
         entidades_validas = {
@@ -143,6 +182,10 @@ def procesar_mensaje(texto, modelo):
             if valor is not None
         }
 
+        print(">>> Voy a llamar a obtener_respuesta_funcional")
+        print(f"Intent: {intent}")
+        print(f"Entidades: {entidades}")
+
         respuesta = obtener_respuesta_funcional(
             intent,
             confianza,
@@ -150,6 +193,7 @@ def procesar_mensaje(texto, modelo):
         )
 
     else:
+
         respuesta = random.choice(RESPUESTAS["fallback"])
 
     return {

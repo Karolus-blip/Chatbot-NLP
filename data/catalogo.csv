@@ -1,0 +1,25 @@
+titulo,autor,categoria,precio,stock
+La Ilíada,Homero,Clásicos,320,8
+La Odisea,Homero,Clásicos,300,10
+El ingenioso hidalgo Don Quijote de la Mancha,Miguel de Cervantes,Novela,450,5
+Rayuela,Julio Cortázar,Novela,390,7
+Siete tragedias,Sófocles,Clásicos,215,9
+Once comedias,Aristófanes,Clásicos,300,10
+El nombre de la rosa,Umberto Eco,Novela,420,15
+Vidas paralelas,Plutarco,Clásicos,230,12
+Eneadas,Plotino,Clásicos,310,5
+Epigramas,Marcial,Clásics,310,8
+Novelas ejemplares,Miguel de Cervantes,Novela,550,9
+Poesías,Luis de Góngora,Poesía,180,12
+La regenta,Leopoldo Alas,Novela,272,13
+El cuarteto de Alejandría,Lawrence Durrell,Novela,520,3
+Memorias de Adriano,Marguerite Yourcenar,Novela,310,2
+Opus Nigrum,Marguerite Yourcenar,Novela,250,6
+Satiricón,Petronio,Clásicos,180,9
+La guerra del Peloponeso,Tucídides,Clásicos,350,16
+Historias,Heródoto,Clásicos,500,7
+Bucólicas,Virgilio,Clásicos,350,14
+Geórgicas,Virgilio,Clásicos,220,20
+Eneida,Virgilio,Clásicos,350,18
+Odas y epodos,Horacio,Clásicos,269,23
+Sátiras y epístolas,Horacio,Clásicos,321,25

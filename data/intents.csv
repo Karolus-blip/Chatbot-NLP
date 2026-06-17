@@ -1,4 +1,12 @@
 texto,intent
+que vale la eneida,consultar_precio
+cuánto cuesta el quijote,consultar_precio
+en cuanto están las tragedias de sofocles,consultar_precio
+que precio tiene vidas paralelas,consultar_precio
+dime el precio de memorias de adriano,consultar_precio
+que precio manejan para las odas de horacio,consultar_precio
+que cuesta Rayuela,consultar_precio
+cuanto tendría que pagar para las historias de herodoto,consultar_precio
 adios,despedida
 hasta luego,despedida
 bye,despedida
