@@ -1,4 +1,11 @@
 texto,intent
+¿de que va la odisea?,consultar_info_libro
+háblame de la Ilíada,consultar_info_libro
+cuéntame sobre el quijote,consultar_info_libro
+¿de qué es Opus Nigrum?,consultar_info_libro
+dame información sobre memorias de adriano,consultar_info_libro
+¿Me puedes decir de que trata la Eneida?,consultar_info_libro
+sobre que es la guerra del peloponeso?,consultar_info_libro
 que vale la eneida,consultar_precio
 cuánto cuesta el quijote,consultar_precio
 en cuanto están las tragedias de sofocles,consultar_precio

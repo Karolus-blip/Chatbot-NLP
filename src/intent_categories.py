@@ -14,5 +14,6 @@ INTENCIONES_FUNCIONALES = {
     "rastrear_pedido",
     "sucursales_horarios",
     "mayoreo",
-    "consultar_precio"
+    "consultar_precio",
+    "consultar_info_libro"
 }

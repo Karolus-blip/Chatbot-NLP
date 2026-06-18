@@ -3,6 +3,62 @@ from database import obtener_todos_los_libros
 import unicodedata
 
 
+PALABRAS_IGNORADAS = {
+    "el",
+    "la",
+    "los",
+    "las",
+    "de",
+    "del",
+    "y",
+    "en",
+    "un",
+    "una"
+}
+
+
+def normalizar_texto(texto):
+
+    texto = texto.lower()
+    texto = unicodedata.normalize("NFD", texto)
+
+    texto = "".join(
+        c
+        for c in texto
+        if unicodedata.category(c) != "Mn"
+    )
+
+    return texto
+
+
+def coincide(texto, valor):
+
+    texto = normalizar_texto(texto)
+    valor = normalizar_texto(valor)
+
+    # Coincidencia completa
+    if valor in texto:
+        return True
+
+    palabras = valor.split()
+
+    coincidencias = 0
+
+    for palabra in palabras:
+
+        if palabra in PALABRAS_IGNORADAS:
+            continue
+
+        if len(palabra) <= 2:
+            continue
+
+        if palabra in texto:
+            coincidencias += 1
+
+    # Debe coincidir al menos una palabra significativa
+    return coincidencias > 0
+
+
 def extraer_entidades(texto):
 
     texto = normalizar_texto(texto)
@@ -14,52 +70,33 @@ def extraer_entidades(texto):
 
     libros = obtener_todos_los_libros()
 
+    mejor_titulo = None
+    mejor_puntaje = 0
+
     for titulo, autor in libros:
 
-        # Buscar título completo
-        if normalizar_texto(titulo) in texto:
-            entidades["titulo"] = titulo
+        titulo_normalizado = normalizar_texto(titulo)
 
-        # Buscar autor completo
-        if normalizar_texto(autor) in texto:
-            entidades["autor"] = autor
-            continue
+        puntaje = 0
 
-        # Buscar por cada palabra significativa del autor
-        for palabra in normalizar_texto(autor).split():
+        for palabra in titulo_normalizado.split():
+
+            if palabra in PALABRAS_IGNORADAS:
+                continue
 
             if len(palabra) <= 2:
                 continue
 
             if palabra in texto:
-                entidades["autor"] = autor
-                break
+                puntaje += 1
+
+        if puntaje > mejor_puntaje:
+            mejor_puntaje = puntaje
+            mejor_titulo = titulo
+
+        if coincide(texto, autor):
+            entidades["autor"] = autor
+
+    entidades["titulo"] = mejor_titulo
 
     return entidades
-
-def coincide(texto, valor):
-
-    texto = texto.lower()
-    valor = valor.lower()
-
-    if valor in texto:
-        return True
-
-    for palabra in valor.split():
-
-        if len(palabra) > 2 and palabra in texto:
-            return True
-
-    return False
-
-def normalizar_texto(texto):
-
-    texto = texto.lower()
-    texto = unicodedata.normalize("NFD", texto)
-    texto = "".join(
-        caracter 
-        for caracter in texto
-        if unicodedata.category(caracter) != "Mn"
-    )
-
-    return texto

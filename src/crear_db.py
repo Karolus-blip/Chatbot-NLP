@@ -17,7 +17,8 @@ CREATE TABLE IF NOT EXISTS libros (
     autor TEXT NOT NULL,
     categoria TEXT,
     precio REAL,
-    stock INTEGER
+    stock INTEGER,
+    descripcion TEXT
 )
 """)
 
@@ -35,14 +36,15 @@ with open(RUTA_CATALOGO, encoding="utf-8") as archivo:
                 fila["categoria"],
                 float(fila["precio"]),
                 int(fila["stock"]),
+                fila["descripcion"]
             )
         )
 
 if cantidad == 0:
 
     cursor.executemany("""
-    INSERT INTO libros (titulo, autor, categoria, precio, stock)
-    VALUES (?, ?, ?, ?, ?)
+    INSERT INTO libros (titulo, autor, categoria, precio, stock, descripcion)
+    VALUES (?, ?, ?, ?, ?, ?)
     """, libros)
 
     print("Libros agregados correctamente.")

@@ -85,3 +85,25 @@ def obtener_todos_los_libros():
     conexion.close()
 
     return resultados
+
+def obtener_info_completa(titulo):
+
+    conexion = sqlite3.connect(RUTA_DB)
+    cursor = conexion.cursor()
+
+    cursor.execute("""
+        SELECT titulo,
+               autor,
+               categoria,
+               precio,
+               stock,
+               descripcion
+        FROM libros
+        WHERE LOWER(titulo) LIKE LOWER(?)
+    """, (f"%{titulo}%",))
+
+    resultado = cursor.fetchone()
+
+    conexion.close()
+
+    return resultado

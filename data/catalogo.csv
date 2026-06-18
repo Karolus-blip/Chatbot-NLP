@@ -1,25 +1,25 @@
-titulo,autor,categoria,precio,stock
-La Ilíada,Homero,Clásicos,320,8
-La Odisea,Homero,Clásicos,300,10
-El ingenioso hidalgo Don Quijote de la Mancha,Miguel de Cervantes,Novela,450,5
-Rayuela,Julio Cortázar,Novela,390,7
-Siete tragedias,Sófocles,Clásicos,215,9
-Once comedias,Aristófanes,Clásicos,300,10
-El nombre de la rosa,Umberto Eco,Novela,420,15
-Vidas paralelas,Plutarco,Clásicos,230,12
-Eneadas,Plotino,Clásicos,310,5
-Epigramas,Marcial,Clásics,310,8
-Novelas ejemplares,Miguel de Cervantes,Novela,550,9
-Poesías,Luis de Góngora,Poesía,180,12
-La regenta,Leopoldo Alas,Novela,272,13
-El cuarteto de Alejandría,Lawrence Durrell,Novela,520,3
-Memorias de Adriano,Marguerite Yourcenar,Novela,310,2
-Opus Nigrum,Marguerite Yourcenar,Novela,250,6
-Satiricón,Petronio,Clásicos,180,9
-La guerra del Peloponeso,Tucídides,Clásicos,350,16
-Historias,Heródoto,Clásicos,500,7
-Bucólicas,Virgilio,Clásicos,350,14
-Geórgicas,Virgilio,Clásicos,220,20
-Eneida,Virgilio,Clásicos,350,18
-Odas y epodos,Horacio,Clásicos,269,23
-Sátiras y epístolas,Horacio,Clásicos,321,25
+titulo,autor,categoria,precio,stock,descripcion
+La Ilíada,Homero,Clásicos,320,8,La Ilíada es uno de los poemas épicos de la antigüedad mejor conservados y que ha significado el punto de inicio de la literatura universal. En esta obra se cantan los últimos días del reino de Príamo, Troya, la valentía del príncipe Héctor y la nefasta cólera de Aquiles.
+La Odisea,Homero,Clásicos,300,10,Poema épico que narra las aventuras del héroe Odiseo de regreso a su casa, luego de la caida de Troya.
+El ingenioso hidalgo Don Quijote de la Mancha,Miguel de Cervantes,Novela,450,5,Novela que cuenta las aventuras de Don Quijote en su locura de ser caballero andante.
+Rayuela,Julio Cortázar,Novela,390,7,La historia sigue a Horacio Oliveira, un intelectual argentino que vive en París y luego en Buenos Aires. A través de sus reflexiones existenciales, sus amoríos con Lucía "La Maga", y sus debates filosóficos con amigos del "Club de la Serpiente", la obra explora temas como el amor, la alienación, el arte y la búsqueda de una realidad más auténtica y profunda.
+Siete tragedias,Sófocles,Clásicos,215,9,De las más de 120 obras escritas por el tragediógrafo griego Sófocles, sólo siete tragedias completas han sobrevivido hasta nuestros días. Esta obras exploran temas como el destino, la soberbia y el conflicto entre las leyes divinas y humanas.
+Once comedias,Aristófanes,Clásicos,300,10,Las once comedias de Aristófanes son el único testimonio íntegro de la Comedia Antigua ateniense y funcionan como una radiografía satírica de la Atenas de los siglos V y IV a.C.
+El nombre de la rosa,Umberto Eco,Novela,420,15,Original mezcla de relato policíaco a lo Agatha Christie y novela culta, El nombre de la rosa cuenta las peripecias de fray Guillermo de Baskerville y su alumno y acompañante fiel, Adso de Melk, en una abadía benedictina en el primer tercio del siglo XIV.
+Vidas paralelas,Plutarco,Clásicos,230,12,Las vidas paralelas de Plutarco son una colección de 46 biografías (divididas en 23 pares) que yuxtaponen la vida de un personaje ilustre de la Antigua Grecia con la de un equivalente romano. Su objetivo principal no era detallar cada evento histórico, sino analizar el carácter moral y ético de los líderes para extraer lecciones de vida.
+Eneadas,Plotino,Clásicos,310,5,Las Eneadas son la obra fundacional del neoplatonismo, escrita por Plotino y recopilada por su discípulo Porfirio. El título proviene del griego "ennea" (nueve), ya que la obra consta de seis libros, cada uno dividido en nueve tratados. Su filosofía traza el camino de la realidad y el retorno del alma.
+Epigramas,Marcial,Clásicos,310,8,Los Epigramas de Marco Valerio Marcial son una vasta colección de más de 1,500 poemas breves que ofrecen una radiografía satírica, realista y mordaz de la sociedad romana del siglo 1 d.C. Destacan por su concisión, su tono crítico y su característico remate ingenioso al final.
+Novelas ejemplares,Miguel de Cervantes,Novela,550,9,Las Novelas Ejemplares de Cervantes son una colección de doce relatos cortos. Fueron las primeras en su tipo en España y se llaman "ejemplares" porque Cervantes buscaba ofrecer ejemplos de conducta, ya sea para imitar sus virtudes o para evitar sus vicios.
+Poesías,Luis de Góngora,Poesía,180,12,Las Poesías de Góngora son el máximo exponente de la poesía no sólo en España, sino también en la Europa del siglo XVII. Su obra representa, dentro del orden de la creación, una verdadera revolución dentro de la estética universal.
+La regenta,Leopoldo Alas,Novela,272,13,Obra maestra de su autor, clásico del naturalismo y una de las cumbres de la literatura en español, La Regenta consiguió la creación de un microcosmos donde se desvela la España toda del siglo XIX: desde la familia hasta la política, pasando por la rigurosa educación, las costumbres, la gravitación religiosa y, por supuesto, la situación de la mujer.
+El cuarteto de Alejandría,Lawrence Durrell,Novela,520,3,Justine inicia la obra que la crítica mundial ha saludado unánimamente como una de las más extraordinarias, audaces y originales de estos últimos años.
+Memorias de Adriano,Marguerite Yourcenar,Novela,310,2,Bajo la forma de una autobiografía imaginaria, minuciosamente fundada en la realidad histórica, Marguerite Yourcenar ha dado a las letras francesas una obra donde la mejor tradición clásica -equilibrio, armonía, ritmo narrativo- coincide con la aguda necesidad confesional del hombre  moderno, con el deseo de alcanzar su verdad más honda sin disimulos ni compromisos.
+Opus Nigrum,Marguerite Yourcenar,Novela,250,6,Alude el título al paralelo establecido entre el momento alquímico llamado Opus Nigrum y la vida del protagonista. Opus Nigrum, vieja fórmula alquímica, significaba la fase de separación y disolución de la materia que, para los alquimistas, constituía la fase primera y más difícil de la Gran Obra.
+Satiricón,Petronio,Clásicos,180,9,El Satiricón es una novela satírica romana que narra las caóticas y licenciosas aventuras de Encolpio y su joven amante Gitón por el sur de Italia. Mezclando prosa y verso, la obra es una aguda parodia de la sociedad de la época, la mitología y las novelas griegas.
+La guerra del Peloponeso,Tucídides,Clásicos,350,16,La Historia de la Guerra del Peloponeso posee un interés que trasciende el momento histórico concreto de los enfrentamientos entre atenienses y lacedemonios, y sus respectivos aliados, al que se une su calidad como obra literaria escrita en un estilo austero y sencillo que se aviene bien con la narración de los grandes acontecimientos.
+Historias,Heródoto,Clásicos,500,7,Las Historias de Heródoto son una recopilación fundacional de la historiografía occidental, escrita en el siglo V. a.C. Su eje central es el conflicto entre las ciudades estado griegas y el imperio Persa (Guerras Médicas), integrando además una valiosa enciclopedia de etnografía, geografía y mitología de los pueblos antiguos.
+Bucólicas,Virgilio,Clásicos,350,14,Estos cantares de pastores, escritos a imitación de los Idilios siracusanos de Teócrito, los fue haciendo Virgilio entre los años 42 y 39 antes de Cristo. Romano es el paisaje de estos poemas, romanos los personajes de su círculo que Virgilio ha vestido de pastores, y romanas las ideas sobre la sociedad política y literaria que se entreveran y dan cuerpo a sus canciones.
+Geórgicas,Virgilio,Clásicos,220,20,Con el poema geórgico se propone Virgilio la recuperación del agro itálico, el renacimiento de una ética enraizada en la tierra, el retorno a las virtudes y sus costumbres ancestrales sobre las que se había fundamentado la añorada grandeza de la antigua Roma. Una composición de intencionalidad social y política, que reencontrándose con las esencias patrias trata de responder al mismo tiempo a las necesidades económicas de la Italia del momento.
+Eneida,Virgilio,Clásicos,350,18,La Eneida es un poema épico latino escrito por Virgilio que narra la historia del príncipe troyano Eneas, quien escapa de la destrucción de Troya y viaja por el Mediterraneo hasta llegar a las costas de Italia, donde sus descendientes fundarán la ciudad de Roma.
+Odas y epodos,Horacio,Clásicos,269,23,La obra de Horacio nos revela en igual medida un testimonio histórico concreto y un paradigma artístico de alcance universal. Su obra puede integrarse, desde el punto de vista de la teoría moderna, en el ámbito de la poesía lírica.
+Sátiras y epístolas,Horacio,Clásicos,321,25,Esa mirada irónica y una expresión ambigua es lo que persiste en sus Sátiras, y la expresión máxima del anhelo de una vida armoniosa en sus Epístolas. El Arte Poética, que la preceptiva neoclásica consideró un tratado poético, cierra con brillantez irónica la obra de Horacio.

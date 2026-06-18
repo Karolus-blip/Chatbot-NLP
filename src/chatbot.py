@@ -14,11 +14,12 @@ from database import (
         buscar_por_titulo,
 )
 from entity_extractor import extraer_entidades
+from book_info import obtener_info_libro
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 MODEL_PATH = BASE_DIR / "models" / "intent_classifier.joblib"
-UMBRAL_CONFIANZA = 0.25
+UMBRAL_CONFIANZA = 0.15
 
 
 def cargar_modelo():
@@ -69,6 +70,14 @@ def obtener_respuesta_funcional(
     if confianza < UMBRAL_CONFIANZA:
         return random.choice(RESPUESTAS["fallback"])
 
+    if intent == "consultar_info_libro":
+
+     if entidades.get("titulo"):
+
+        return obtener_info_libro(entidades["titulo"])
+
+     return "¿Sobre qué libro te gustaría obtener información?"
+   
     if intent == "consultar_precio":
 
         print(">>> Entré al bloque consultar_precio")
@@ -118,7 +127,26 @@ def obtener_respuesta_funcional(
             return "No encontré libros de ese autor."
 
     elif intent == "info_titulos":
+        # Si el usuario pidió libros de un autor
+        if entidades.get("autor"):
 
+            libros = buscar_por_autor(entidades["autor"])
+
+            if libros:
+
+                lista = "\n".join(
+                    f"- {titulo}"
+                    for titulo, autor in libros
+                )
+
+                return (
+                    f"Encontré estos libros de "
+                    f"{entidades['autor']}:\n{lista}"
+                )
+
+            return "No encontré libros de ese autor."
+
+        # Si pidió un título específico
         if entidades.get("titulo"):
 
             libro = buscar_por_titulo(entidades["titulo"])
@@ -135,6 +163,7 @@ def obtener_respuesta_funcional(
                     f"Stock: {stock}"
                 )
 
+        # Si no especificó autor ni título
         libros = obtener_todos_los_libros()
 
         if not libros:
