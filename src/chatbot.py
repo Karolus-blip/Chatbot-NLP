@@ -1,4 +1,5 @@
 from pathlib import Path
+from memoria import guardar_conversacion
 
 import random
 import joblib
@@ -252,6 +253,14 @@ def main():
             break
 
         resultado = procesar_mensaje(texto, modelo)
+
+        guardar_conversacion(
+            mensaje_usuario=texto,
+            respuesta_bot=resultado["respuesta"],
+            intencion=resultado["intent"],
+            confianza=resultado["confianza"],
+            entidades=resultado["entidades"],
+        )
 
         if resultado["entidades"]:
             print(f"Entidades extraídas: {resultado['entidades']}")
