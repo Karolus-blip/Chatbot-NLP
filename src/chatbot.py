@@ -1,5 +1,11 @@
 from pathlib import Path
-from memoria import guardar_conversacion
+from memoria import (
+    guardar_conversacion,
+    obtener_ultimas_conversaciones,
+    buscar_ultima_entidad,
+    obtener_ultima_intencion,
+)
+
 
 import random
 import joblib
@@ -73,17 +79,36 @@ def obtener_respuesta_funcional(
 
     if intent == "consultar_info_libro":
 
-     if entidades.get("titulo"):
+        if entidades.get("titulo"):
+            return obtener_info_libro(entidades["titulo"])
 
-        return obtener_info_libro(entidades["titulo"])
+        return "¿Sobre qué libro te gustaría obtener información?"
 
-     return "¿Sobre qué libro te gustaría obtener información?"
-   
-    if intent == "consultar_precio":
+    elif intent == "consultar_precio":
 
         print(">>> Entré al bloque consultar_precio")
         print(f"Entidades: {entidades}")
 
+        ultima_intencion = obtener_ultima_intencion()
+
+        if (
+            not entidades.get("titulo")
+            and ultima_intencion == "info_titulos"
+        ):
+            return (
+                "Acabo de mostrarte varios libros. "
+                "¿De cuál de ellos quieres conocer el precio?"
+            )
+
+        if not entidades.get("titulo"):
+            ultimo_titulo = buscar_ultima_entidad("titulo")
+            if ultimo_titulo:
+                entidades["titulo"] = ultimo_titulo
+
+                print(
+                    f">>> Usando título desde memoria: "
+                    f"{ultimo_titulo}"
+                )
         if entidades.get("titulo"):
 
             print(f"Título detectado: {entidades['titulo']}")
@@ -252,6 +277,20 @@ def main():
             print("Bot: Hasta luego.")
             break
 
+        contexto = obtener_ultimas_conversaciones()
+        print("\n===== CONTEXTO RECIENTE =====")
+
+        if contexto:
+            for mensaje, respuesta, intencion, entidades, fecha in contexto:
+                print(f"Usuario: {mensaje}")
+                print(f"Bot: {respuesta}")
+                print(f"Intención: {intencion}")
+                print("-" * 30)
+        else:
+            print("No hay conversaciones registradas.")
+
+        print("=============================\n")
+        
         resultado = procesar_mensaje(texto, modelo)
 
         guardar_conversacion(
