@@ -1,86 +1,135 @@
 # Chatbot NLP para Librería
 
-Evolución de un chatbot basado en reglas hacia un chatbot con Procesamiento de Lenguaje Natural
+Asistente conversacional desarrollado en Python para la consulta de un catálogo de libros mediante lenguaje natural.
 
-Este proyecto representa la segunda etapa de un proceso de aprendizaje en el desarrollo de asistentes conversacionales.
+Este proyecto utiliza técnicas clásicas de Procesamiento de Lenguaje Natural (NLP) para interpretar consultas de los usuarios, identificar intenciones, extraer entidades relevantes y recuperar información desde una base de datos.
 
-La primera versión del chatbot (Chatbot-Intro) fue construida utilizando lógica condicional en Python, donde cada respuesta dependía de reglas definidas manualmente (if/else y coincidencias explícitas de texto).
+Más que un chatbot aislado, este repositorio documenta una evolución progresiva desde sistemas basados en reglas hacia arquitecturas conversacionales apoyadas en aprendizaje automático y procesamiento lingüístico.
 
-En esta nueva versión, el enfoque cambia completamente: el chatbot utiliza técnicas de Procesamiento de Lenguaje Natural (NLP) para interpretar las consultas del usuario, clasificar su intención y extraer información relevante antes de generar una respuesta.
+---
 
-El objetivo del proyecto no es únicamente crear un chatbot funcional, sino explorar la transición desde un sistema basado en reglas hacia un sistema capaz de generalizar a partir de ejemplos de entrenamiento.
+## Objetivos del proyecto
+
+El proyecto nació como una continuación de un chatbot construido exclusivamente mediante reglas condicionales en Python.
+
+La primera versión respondía a partir de estructuras `if/else` y coincidencias explícitas de texto. En esta nueva etapa, el chatbot es capaz de generalizar a partir de ejemplos de entrenamiento, identificar patrones lingüísticos y recuperar información de forma dinámica.
+
+El objetivo principal es comprender los fundamentos técnicos de los sistemas conversacionales modernos mediante la implementación práctica de componentes de NLP.
 
 ---
 
 ## Características
 
--Clasificación de intenciones mediante scikit-learn y TF-IDF.
--Extracción de entidades (título y autor).
--Consulta de una base de datos SQLite de libros.
--Respuestas diferenciadas para intenciones sociales y funcionales.
--Arquitectura modular que facilita la incorporación de nuevas funcionalidades.
--Interfaz de consola y preparación para interfaz web con Streamlit.
-
----
-
-## ¿Qué NO hace este bot?
-
-Para mantener el proyecto sencillo y didáctico:
-
-- no usa modelos generativos ni LLMs
-- no mantiene memoria de conversación
-- no sigue flujos complejos
-- no consulta bases de datos reales
-- no procesa pagos ni pedidos de verdad
-
-Es un ejercicio educativo para entender la lógica base de un chatbot clásico.
+* Clasificación de intenciones mediante TF-IDF y scikit-learn.
+* Extracción de entidades (autores y títulos).
+* Consultas dinámicas a una base de datos SQLite.
+* Memoria conversacional básica entre turnos.
+* Separación entre frontend y backend.
+* Interfaz web conversacional desarrollada con Streamlit.
+* Arquitectura modular y extensible.
 
 ---
 
 ## Tecnologías utilizadas
 
-Python 3
-scikit-learn
-pandas
-SQLite
-joblib
-Streamlit
-
-## ¿Cómo funciona?
-
-Cuando una persona escribe algo como:
-
-> “Quiero saber dónde va mi pedido”
-
-el sistema hace esto:
-
-### Paso A. Clasificar la intención
-
-El modelo mira el texto y calcula cuál intención parece más probable.
-
-Por ejemplo, podría producir algo así:
-
-- rastrear_pedido: 0.81
-- cancelar_pedido: 0.09
-- nuevo_pedido: 0.05
-- otras: menos probables
-
-Después se queda con la más probable: `rastrear_pedido`.
-
-### Paso B. Elegir una respuesta humana
-
-Una vez que el sistema decidió la intención, busca una respuesta predefinida. Por ejemplo:
-
-> “Con gusto te ayudo a rastrear tu pedido. Comparte tu número de pedido para revisarlo.”
-
-Esa respuesta **no salió del modelo**. La escribió una persona.
+* Python
+* scikit-learn
+* Streamlit
+* SQLite
+* Joblib
+* Pandas
 
 ---
+
+## Arquitectura general
+
+Usuario
+
+↓
+
+Interfaz Streamlit
+
+↓
+
+Clasificación de intención
+
+↓
+
+Extracción de entidades
+
+↓
+
+Memoria conversacional
+
+↓
+
+Consulta a base de datos SQLite
+
+↓
+
+Respuesta dinámica
+
+---
+
+## Ejemplo de funcionamiento
+
+### Consulta de libros por autor
+
+Usuario:
+
+> ¿Qué libros tienen de Homero?
+
+Proceso interno:
+
+1. Clasificación de intención
+
+```text
+info_titulos
+```
+
+2. Extracción de entidades
+
+```text
+autor = Homero
+```
+
+3. Consulta a la base de datos
+
+```sql
+SELECT titulo
+FROM libros
+WHERE autor = 'Homero';
+```
+
+4. Respuesta generada
+
+```text
+Encontré estos libros de Homero:
+
+- Ilíada
+- Odisea
+```
+
+---
+
+## Estado actual
+
+Actualmente el sistema es capaz de:
+
+* Identificar la intención principal de una consulta.
+* Detectar autores y títulos mencionados por el usuario.
+* Recuperar información desde una base de datos SQLite.
+* Mantener contexto básico entre preguntas consecutivas.
+* Mostrar información de depuración NLP mediante una interfaz web.
+* Gestionar consultas funcionales y sociales.
+
+---
+
 ## Estructura del proyecto
 
-chatbot-nlp-librería/
+```text
+chatbot-nlp-libreria/
 │
-├── .venv/
 ├── data/
 ├── models/
 ├── src/
@@ -91,7 +140,7 @@ chatbot-nlp-librería/
 │   ├── entity_extractor.py
 │   ├── evaluate.py
 │   ├── intent_categories.py
-│   ├── probar_database.py
+│   ├── memoria.py
 │   ├── responses.py
 │   ├── train.py
 │   ├── visualize_vectors.py
@@ -101,43 +150,74 @@ chatbot-nlp-librería/
 ├── LICENSE
 ├── README.md
 └── requirements.txt
+```
+
+---
 
 ## Instalación
 
-Instalación
+Clonar el repositorio:
 
-Clona el repositorio:
-
+```bash
 git clone https://github.com/Karolus-blip/chatbot-nlp-libreria.git
+```
 
-Instala las dependencias:
+Entrar al directorio del proyecto:
 
+```bash
+cd chatbot-nlp-libreria
+```
+
+Instalar dependencias:
+
+```bash
 pip install -r requirements.txt
+```
+
+---
 
 ## Ejecución
 
 Entrenar el modelo:
 
+```bash
 python src/train.py
+```
 
-Ejecutar el chatbot desde la terminal:
+Ejecutar el chatbot desde consola:
 
+```bash
 python src/chatbot.py
+```
 
 Ejecutar la interfaz web:
 
+```bash
 streamlit run src/webapp.py
+```
+
+---
 
 ## Próximas mejoras
 
--Ampliar el conjunto de intenciones y ejemplos de entrenamiento.
--Incorporar nuevas entidades (editorial, género, ISBN).
--Implementar contexto conversacional entre turnos.
--Integrar modelos basados en embeddings.
--Desplegar el chatbot mediante una API y una interfaz web.
+* Incorporar nuevas entidades (editorial, género, ISBN).
+* Mejorar la gestión de contexto conversacional.
+* Implementar búsqueda semántica mediante embeddings.
+* Añadir recomendaciones de libros.
+* Exponer funcionalidades mediante una API REST.
+* Desplegar la aplicación en la nube.
 
-## Reflexión
+---
 
-Más que un chatbot terminado, este repositorio documenta una evolución técnica: pasar de un asistente construido exclusivamente con reglas escritas a mano a un sistema que aprende patrones lingüísticos a partir de datos.
+## Aprendizajes
 
-Ese cambio de paradigma ha permitido comprender mejor cómo funcionan los sistemas conversacionales modernos y sentar las bases para proyectos más complejos en NLP y diseño conversacional.
+Este proyecto ha servido como espacio de experimentación para comprender conceptos fundamentales de:
+
+* Procesamiento de Lenguaje Natural.
+* Clasificación de texto.
+* Extracción de entidades.
+* Diseño conversacional.
+* Gestión de contexto.
+* Integración entre NLP y bases de datos.
+
+Más que un producto terminado, este repositorio representa una etapa dentro de un proceso continuo de aprendizaje y desarrollo en sistemas conversacionales.
